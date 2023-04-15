@@ -14,6 +14,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.done {
+  text-decoration: line-through;
+}
 
 /* Header */
 header {
@@ -40,5 +43,18 @@ header .add-task:hover {
 
 .categories-list li:hover {
   background-color: var(--mouseover);
+  cursor: pointer;
+}
+
+/* main content */
+.check {
+  background-color: rgb(228, 251, 255);
+  border: 2px solid var(--mycyan);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+}
+
+.check:hover {
   cursor: pointer;
 }

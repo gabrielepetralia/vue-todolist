@@ -60,11 +60,21 @@
             <span class="fs-3 fw-bold">{{categories[currCategory].name}}</span>
           </div>
 
-          <div class="tasks-container bg-body-tertiary rounded-4 p-5 w-100">
-            <ul class="tasks-list list-unstyled">
-              <li v-for="(task,index) in tasksFiltered">
-                <span>{{task.text}}</span>
-                <span>{{task.category}}</span>
+          <div class="tasks-container bg-body-tertiary rounded-4 px-5 py-4 w-100">
+            <ul class="tasks-list list-unstyled mb-0">
+              <li v-for="(task,index) in tasksFiltered" class="d-flex justify-content-between align-items-center fw-bold text-body-secondary border-bottom pb-3 mb-3">
+
+                <div class="task-left d-flex align-items-center">
+                  <div @click="task.done = !task.done" class="check me-3 d-flex justify-content-center align-items-center">
+                    <i v-if="task.done" class="fa-solid fa-check"></i>
+                  </div>
+                  <span :class="{'done' : task.done}">{{task.text}}</span>
+                </div>
+
+                <div class="task-right">
+                  <span>{{task.category}}</span>
+                </div>
+
               </li>
             </ul>
           </div>
