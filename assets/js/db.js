@@ -10,11 +10,6 @@ const categories = [
     numTasks : 0,
   },
   {
-    icon : "fa-cart-shopping",
-    name : "Spesa",
-    numTasks : 0,
-  },
-  {
     icon : "fa-briefcase",
     name : "Lavoro",
     numTasks : 0,
@@ -22,6 +17,11 @@ const categories = [
   {
     icon : "fa-book",
     name : "Studio",
+    numTasks : 0,
+  },
+  {
+    icon : "fa-cart-shopping",
+    name : "Spesa",
     numTasks : 0,
   },
   {
@@ -53,7 +53,7 @@ const tasks = [
   {
     text : "Lorem ipsum",
     done : false,
-    category : "Casa",
+    category : "Salute",
     priority : 1,
   },
   {
