@@ -6,7 +6,8 @@
 }
 
 :root {
-  --mycyan: rgb(25, 156, 182);
+  --mycyan : rgb(25, 156, 182);
+  --mouseover : rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -20,6 +21,11 @@ header {
   height: 80px;
 }
 
+header .add-task:hover {
+  background-color: var(--mouseover);
+  cursor: pointer;
+}
+
 
 /* Main */
 .main-wrapper {
@@ -29,10 +35,10 @@ header {
 /* sidebar */
 .sidebar {
   width: 16%;
-  min-width: 180px;
+  min-width: 200px;
 }
 
-.category-list li:hover {
-  background-color: rgb(230, 230, 230);
+.categories-list li:hover {
+  background-color: var(--mouseover);
   cursor: pointer;
 }

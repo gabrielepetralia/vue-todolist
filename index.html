@@ -26,9 +26,15 @@
 <body>
   <div id="app">
     <header>
-      <div class="d-flex justify-content-center align-items-center text-white h-100">
-        <i class="fs-1" :class="logo"></i>
-        <h1 class="fw-bold mb-0 ms-3">{{title}}</h1>
+      <div class="d-flex justify-content-between align-items-center text-white h-100 ps-5 pe-5">
+        <div class="d-flex align-items-center">
+          <i class="fs-2 me-2" :class="logo"></i>
+          <h1 class="fw-bold fs-2 mb-0">{{title}}</h1>
+        </div>
+        <div class="add-task d-flex align-items-center rounded-4 px-3 py-2">
+          <h5 class="mb-0">Add a Task</h5>
+          <i class="fa-solid fa-square-plus fs-3 ms-3"></i>
+        </div>
       </div>
     </header>
 
@@ -36,8 +42,8 @@
       <div class="main-wrapper">
 
         <div class="sidebar bg-body-tertiary h-100 p-4">
-          <ul class="category-list list-unstyled">
-            <li v-for="category in categories" class="rounded-4 d-flex justify-content-between align-items-center fw-bold p-3 mb-1">
+          <ul class="categories-list list-unstyled">
+            <li v-for="category in categories" class="rounded-4 d-flex justify-content-between align-items-center fw-bold px-3 py-2 mb-2">
               <div class="d-flex align-items-center text-body-secondary">
                 <i class="fs-6 me-3 fa-solid" :class="category.icon"></i>
                 <span class="fs-5 me-2">{{category.name}}</span>
@@ -48,7 +54,7 @@
         </div>
 
         <div class="tasks-wrapper">
-
+          
         </div>
 
       </div>
