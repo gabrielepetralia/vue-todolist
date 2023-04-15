@@ -1,5 +1,38 @@
+/* General */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --mycyan: rgb(25, 156, 182);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Header */
+header {
+  background-color: var(--mycyan);
+  height: 80px;
+}
+
+
+/* Main */
+.main-wrapper {
+  height: calc(100vh - 80px);
+}
+
+/* sidebar */
+.sidebar {
+  width: 16%;
+  min-width: 180px;
+}
+
+.category-list li:hover {
+  background-color: rgb(230, 230, 230);
+  cursor: pointer;
 }
