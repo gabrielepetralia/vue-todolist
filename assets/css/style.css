@@ -35,7 +35,7 @@ header .add-task:hover {
 /* sidebar */
 .sidebar {
   width: 16%;
-  min-width: 200px;
+  min-width: 220px;
 }
 
 .categories-list li:hover {

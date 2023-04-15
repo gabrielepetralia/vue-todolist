@@ -32,18 +32,18 @@
           <h1 class="fw-bold fs-2 mb-0">{{title}}</h1>
         </div>
         <div class="add-task d-flex align-items-center rounded-4 px-3 py-2">
-          <h5 class="mb-0">Add a Task</h5>
+          <h5  @click="" class="mb-0">Add a Task</h5>
           <i class="fa-solid fa-square-plus fs-3 ms-3"></i>
         </div>
       </div>
     </header>
 
     <main>
-      <div class="main-wrapper">
+      <div class="main-wrapper d-flex">
 
         <div class="sidebar bg-body-tertiary h-100 p-4">
           <ul class="categories-list list-unstyled">
-            <li v-for="category in categories" class="rounded-4 d-flex justify-content-between align-items-center fw-bold px-3 py-2 mb-2">
+            <li @click="currCategory = index; categoryFilter();" v-for="(category,index) in categories" class="d-flex justify-content-between align-items-center rounded-4 fw-bold px-3 py-2 mb-2">
               <div class="d-flex align-items-center text-body-secondary">
                 <i class="fs-6 me-3 fa-solid" :class="category.icon"></i>
                 <span class="fs-5 me-2">{{category.name}}</span>
@@ -53,8 +53,22 @@
           </ul>
         </div>
 
-        <div class="tasks-wrapper">
-          
+        <div class="main-content p-5 ms-4 w-100">
+
+          <div class="tasks-header text-body-secondary mb-4">
+            <i class="fs-4 me-2 fa-solid" :class="categories[currCategory].icon"></i>
+            <span class="fs-3 fw-bold">{{categories[currCategory].name}}</span>
+          </div>
+
+          <div class="tasks-container bg-body-tertiary rounded-4 p-5 w-100">
+            <ul class="tasks-list list-unstyled">
+              <li v-for="(task,index) in tasksFiltered">
+                <span>{{task.text}}</span>
+                <span>{{task.category}}</span>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
       </div>
