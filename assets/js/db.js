@@ -33,61 +33,61 @@ const categories = [
 
 const tasks = [
   {
-    text : "Lorem ipsum",
+    text : "Comprare sciroppo",
     done : false,
     category : "Salute",
-    priority : 1, /*da 1 a 4*/
+    priority : 1, /*da 1 a 3 (rosso,giallo,verde)*/
   },
   {
-    text : "Lorem ipsum",
+    text : "Lavare pavimento",
     done : false,
     category : "Casa",
     priority : 1,
   },
   {
-    text : "Lorem ipsum",
+    text : "Riscrivere appunti",
     done : false,
     category : "Studio",
     priority : 1,
   },
   {
-    text : "Lorem ipsum",
+    text : "Prendere antistaminico",
     done : false,
     category : "Salute",
     priority : 1,
   },
   {
-    text : "Lorem ipsum",
+    text : "Mandare mail",
     done : false,
     category : "Lavoro",
     priority : 1,
   },
   {
-    text : "Lorem ipsum",
+    text : "Comprare pasta",
     done : false,
     category : "Spesa",
     priority : 1,
   },
   {
-    text : "Lorem ipsum",
+    text : "Guardare videolezione",
     done : false,
     category : "Studio",
     priority : 1,
   },
   {
-    text : "Lorem ipsum",
+    text : "Comprare cioccolato",
     done : false,
     category : "Spesa",
     priority : 1,
   },
   {
-    text : "Lorem ipsum",
+    text : "Sistemare cucina",
     done : false,
     category : "Casa",
     priority : 1,
   },
   {
-    text : "Lorem ipsum",
+    text : "Comprare carne",
     done : false,
     category : "Spesa",
     priority : 1,

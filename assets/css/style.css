@@ -7,6 +7,7 @@
 
 :root {
   --mycyan : rgb(25, 156, 182);
+  --myred: rgb(192, 44, 44);
   --mouseover : rgba(0, 0, 0, 0.1);
 }
 
@@ -17,6 +18,10 @@ body {
 .done {
   text-decoration: line-through;
 }
+
+/* .badge {
+
+} */
 
 /* Header */
 header {
@@ -47,6 +52,14 @@ header .add-task:hover {
 }
 
 /* main content */
+.error-message {
+  color : var(--myred);
+}
+
+.emoji {
+  color : rgb(241, 221, 34);
+}
+
 .check {
   background-color: rgb(228, 251, 255);
   border: 2px solid var(--mycyan);
@@ -57,4 +70,9 @@ header .add-task:hover {
 
 .check:hover {
   cursor: pointer;
+}
+
+.delete:hover {
+  cursor: pointer;
+  color : var(--myred);
 }

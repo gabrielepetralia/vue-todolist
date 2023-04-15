@@ -11,14 +11,13 @@ createApp({
       currCategory : 0,
       tasksFiltered : [],
       tasksFilteredCounter : [],
+      errorMsg : "",
+      test : true,
+      deletedIndex : 0,
     }
   },
 
   methods : {
-    test() {
-      
-    },
-
     categoryFilter() {
       if(this.categories[this.currCategory].name !== "Generale") {
         this.tasksFiltered = this.tasks.filter( task => task.category === this.categories[this.currCategory].name);
@@ -37,6 +36,35 @@ createApp({
         }
         else {
           category.numTasks = this.tasks.length;
+        }
+      })
+    },
+
+    deleteTask(index) {
+      if(this.tasksFiltered[index].done) {
+        this.matchIndex(index);
+        this.tasks.splice(this.deletedIndex,1);
+        this.tasksCounter();
+        this.categoryFilter();
+        this.errorMsg = "";
+      } else {
+        this.writeErrorMsg("Attenzione! Non puoi eliminare una task senza averla fatta!");
+      }
+    },
+
+    writeErrorMsg(msg) {
+      this.errorMsg = msg;
+      setTimeout(() => {
+        this.errorMsg = "";
+      },2000)
+    },
+
+    matchIndex(index) {
+      this.tasks.forEach( (task,i) => {
+        if(this.tasksFiltered[index].text === task.text) {
+          console.log(task.text);
+          console.log(i);
+          this.deletedIndex = i;
         }
       })
     }

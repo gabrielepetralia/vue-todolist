@@ -43,7 +43,10 @@
 
         <div class="sidebar bg-body-tertiary h-100 p-4">
           <ul class="categories-list list-unstyled">
-            <li @click="currCategory = index; categoryFilter();" v-for="(category,index) in categories" class="d-flex justify-content-between align-items-center rounded-4 fw-bold px-3 py-2 mb-2">
+            <li
+              @click="currCategory = index; categoryFilter();"
+              v-for="(category,index) in categories"
+              class="d-flex justify-content-between align-items-center rounded-4 fw-bold px-3 py-2 mb-2">
               <div class="d-flex align-items-center text-body-secondary">
                 <i class="fs-6 me-3 fa-solid" :class="category.icon"></i>
                 <span class="fs-5 me-2">{{category.name}}</span>
@@ -55,24 +58,41 @@
 
         <div class="main-content p-5 ms-4 w-100">
 
-          <div class="tasks-header text-body-secondary mb-4">
-            <i class="fs-4 me-2 fa-solid" :class="categories[currCategory].icon"></i>
-            <span class="fs-3 fw-bold">{{categories[currCategory].name}}</span>
+          <div class="tasks-header d-flex justify-content-between fw-bold mx-5 mb-4">
+            <div class="text-body-secondary">
+              <i class="fs-4 me-2 fa-solid" :class="categories[currCategory].icon"></i>
+              <span class="fs-3">{{categories[currCategory].name}}</span>
+            </div>
+            <div class="error-message">
+              <span class="fs-5">{{errorMsg}}</span>
+            </div>
           </div>
 
           <div class="tasks-container bg-body-tertiary rounded-4 px-5 py-4 w-100">
-            <ul class="tasks-list list-unstyled mb-0">
-              <li v-for="(task,index) in tasksFiltered" class="d-flex justify-content-between align-items-center fw-bold text-body-secondary border-bottom pb-3 mb-3">
+
+            <div v-if="tasksFiltered.length === 0" class="d-flex align-items-center">
+              <span class="fs-5 fw-bold text-body-secondary me-2">Non ci sono tasks!</span>
+              <i class="fs-3 emoji fa-solid fa-face-laugh-wink"></i>
+            </div>
+
+            <ul v-else class="tasks-list list-unstyled mb-0">
+
+              <li
+                v-for="(task,index) in tasksFiltered"
+                class="d-flex justify-content-between align-items-center fw-bold text-body-secondary border-bottom pb-3 mb-3">
 
                 <div class="task-left d-flex align-items-center">
-                  <div @click="task.done = !task.done" class="check me-3 d-flex justify-content-center align-items-center">
+                  <div
+                    @click="task.done = !task.done"
+                    class="check me-3 d-flex justify-content-center align-items-center">
                     <i v-if="task.done" class="fa-solid fa-check"></i>
                   </div>
                   <span :class="{'done' : task.done}">{{task.text}}</span>
                 </div>
 
                 <div class="task-right">
-                  <span>{{task.category}}</span>
+                  <span class="me-4">{{task.category}}</span>
+                  <i @click="deleteTask(index)" class="delete fa-solid fa-trash"></i>
                 </div>
 
               </li>
