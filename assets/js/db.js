@@ -20,6 +20,16 @@ const categories = [
     numTasks : 0,
   },
   {
+    icon : "fa-football",
+    name : "Sport",
+    numTasks : 0,
+  },
+  {
+    icon : "fa-music",
+    name : "Musica",
+    numTasks : 0,
+  },
+  {
     icon : "fa-cart-shopping",
     name : "Spesa",
     numTasks : 0,
@@ -36,7 +46,7 @@ const tasks = [
     text : "Comprare sciroppo",
     done : false,
     category : "Salute",
-    priority : 1, /*da 1 a 3 (rosso,giallo,verde)*/
+    priority : 2,
   },
   {
     text : "Lavare pavimento",
@@ -48,7 +58,7 @@ const tasks = [
     text : "Riscrivere appunti",
     done : false,
     category : "Studio",
-    priority : 1,
+    priority : 3,
   },
   {
     text : "Prendere antistaminico",
@@ -60,7 +70,7 @@ const tasks = [
     text : "Mandare mail",
     done : false,
     category : "Lavoro",
-    priority : 1,
+    priority : 3,
   },
   {
     text : "Comprare pasta",
@@ -72,26 +82,44 @@ const tasks = [
     text : "Guardare videolezione",
     done : false,
     category : "Studio",
-    priority : 1,
+    priority : 2,
   },
   {
     text : "Comprare cioccolato",
     done : false,
     category : "Spesa",
-    priority : 1,
+    priority : 2,
   },
   {
     text : "Sistemare cucina",
     done : false,
     category : "Casa",
-    priority : 1,
+    priority : 2,
   },
   {
     text : "Comprare carne",
     done : false,
     category : "Spesa",
-    priority : 1,
-  }
+    priority : 3,
+  },
+  {
+    text : "Ripassare scale",
+    done : false,
+    category : "Musica",
+    priority : 3,
+  },
+  {
+    text : "Studiare solfeggio",
+    done : false,
+    category : "Musica",
+    priority : 2,
+  },
+  {
+    text : "Fare ricerca",
+    done : false,
+    category : "Studio",
+    priority : 2,
+  },
 ]
 
 export {categories,tasks}

@@ -7,7 +7,9 @@
 
 :root {
   --mycyan : rgb(25, 156, 182);
-  --myred: rgb(192, 44, 44);
+  --myred: rgb(215, 65, 65);
+  --myyellow: rgb(244, 228, 84);
+  --mygreen : rgb(96, 195, 96);
   --mouseover : rgba(0, 0, 0, 0.1);
 }
 
@@ -19,9 +21,26 @@ body {
   text-decoration: line-through;
 }
 
-/* .badge {
+.gp-badge {
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: white;
+  background-color: var(--mycyan);
+}
 
-} */
+.gp-badge-red {
+  background-color: var(--myred);
+}
+
+.gp-badge-yellow {
+  background-color: var(--myyellow);
+}
+
+.gp-badge-green {
+  background-color: var(--mygreen);
+}
+
 
 /* Header */
 header {
@@ -57,7 +76,7 @@ header .add-task:hover {
 }
 
 .emoji {
-  color : rgb(241, 221, 34);
+  color : var(--myyellow);
 }
 
 .check {

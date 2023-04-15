@@ -90,9 +90,18 @@
                   <span :class="{'done' : task.done}">{{task.text}}</span>
                 </div>
 
-                <div class="task-right">
-                  <span class="me-4">{{task.category}}</span>
-                  <i @click="deleteTask(index)" class="delete fa-solid fa-trash"></i>
+                <div class="task-right d-flex align-items-center">
+                  <div class="gp-badge me-4">
+                    <i class="me-2 fa-solid" :class="setBadgeIcon(index)"></i>
+                    <span>{{task.category}}</span>
+                  </div>
+
+                  <div class="gp-badge me-4" :class="setBadgeColor(index)">
+                    <i class="fa-solid fa-flag me-1"></i>
+                    <span>{{task.priority}}</span>
+                  </div>
+
+                  <i @click="deleteTask(index)" class="delete fs-5 fa-solid fa-trash"></i>
                 </div>
 
               </li>

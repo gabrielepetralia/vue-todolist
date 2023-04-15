@@ -14,6 +14,8 @@ createApp({
       errorMsg : "",
       test : true,
       deletedIndex : 0,
+      badgeColor : "",
+      badgeIcon : "",
     }
   },
 
@@ -40,6 +42,13 @@ createApp({
       })
     },
 
+    writeErrorMsg(msg) {
+      this.errorMsg = msg;
+      setTimeout(() => {
+        this.errorMsg = "";
+      },2000)
+    },
+
     deleteTask(index) {
       if(this.tasksFiltered[index].done) {
         this.matchIndex(index);
@@ -52,13 +61,6 @@ createApp({
       }
     },
 
-    writeErrorMsg(msg) {
-      this.errorMsg = msg;
-      setTimeout(() => {
-        this.errorMsg = "";
-      },2000)
-    },
-
     matchIndex(index) {
       this.tasks.forEach( (task,i) => {
         if(this.tasksFiltered[index].text === task.text) {
@@ -67,10 +69,59 @@ createApp({
           this.deletedIndex = i;
         }
       })
+    },
+
+    prioritySort() {
+      this.tasks.sort((a,b) => a.priority - b.priority);
+    },
+
+    setBadgeColor(index) {
+      switch (this.tasksFiltered[index].priority) {
+        case 1:
+          this.badgeColor = "gp-badge-red";
+          break;
+        case 2:
+          this.badgeColor = "gp-badge-yellow";
+          break;  
+        default:
+          this.badgeColor = "gp-badge-green";
+          break;
+      }
+
+      return this.badgeColor;
+    },
+
+    setBadgeIcon (index) {
+      switch (this.tasksFiltered[index].category) {
+        case this.categories[1].name :
+          this.badgeIcon = this.categories[1].icon;
+          break;
+        case this.categories[2].name:
+          this.badgeIcon = this.categories[2].icon;
+          break;  
+        case this.categories[3].name:
+          this.badgeIcon = this.categories[3].icon;
+          break;
+        case this.categories[4].name:
+          this.badgeIcon = this.categories[4].icon;
+          break;
+        case this.categories[5].name:
+          this.badgeIcon = this.categories[5].icon;
+          break;    
+        case this.categories[6].name:
+          this.badgeIcon = this.categories[6].icon;
+          break;
+        case this.categories[7].name:
+          this.badgeIcon = this.categories[7].icon;
+          break;    
+      }
+
+      return this.badgeIcon;
     }
   },
 
   mounted(){
+    this.prioritySort();
     this.categoryFilter();
     this.tasksCounter();
   }
