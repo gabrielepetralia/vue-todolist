@@ -31,9 +31,53 @@
           <i class="fs-2 me-2" :class="logo"></i>
           <h1 class="fw-bold fs-2 mb-0">{{title}}</h1>
         </div>
-        <div class="add-task d-flex align-items-center rounded-4 px-3 py-2">
-          <h5  @click="" class="mb-0">Add a Task</h5>
+        <div
+          @click=""
+          class="add-task d-flex align-items-center rounded-4 px-3 py-2"
+          data-bs-toggle="modal"
+          data-bs-target="#add-task-modal">
+          <h5 class="mb-0">Add a Task</h5>
           <i class="fa-solid fa-square-plus fs-3 ms-3"></i>
+        </div>
+      </div>
+
+      <div class="modal fade" id="add-task-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header add-modal-header">
+              <h1 class="modal-title fs-5 fw-bold text-white" id="exampleModalLabel">Add a Task</h1>
+              <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-body-tertiary">
+              <input
+                v-model="newTaskText"
+                @keyup.enter="addTask"
+                placeholder="New Task"
+                class="input-new-task rounded ps-2 mb-3 w-100"
+                type="text">
+
+              <div class="d-flex align-items-center fw-bold text-body-secondary">
+                <span class="me-3">Category</span>
+                <select v-model="newTaskCategory" class="form-select me-5" aria-label="Default select example">
+                  <option v-for="category in categories" :value="category.name">{{category.name}}</option>
+                </select>
+                
+                <span class="me-3">Priority</span>
+                <select v-model="newTaskPriority" class="form-select" aria-label="Default select example">
+                  <option :value="1">1</option>
+                  <option :value="2">2</option>
+                  <option :value="3">3</option>
+                </select>
+              </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+              <div class="error-message">
+                <span class="fs-6">{{addErrorMsg}}</span>
+              </div>
+              <button @click="addTask" type="button" class="btn-add-task btn text-white">Add Task</button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -64,7 +108,11 @@
               <span class="fs-3">{{categories[currCategory].name}}</span>
             </div>
             <div class="error-message">
-              <span class="fs-5">{{errorMsg}}</span>
+              <span class="fs-5">{{deleteErrorMsg}}</span>
+            </div>
+            <div @click="deleteCheckedTasks" class="delete-checked text-white rounded-4 px-3 py-2">
+              <span class="me-2">Delete checked</span>
+              <i class="fa-solid fa-trash"></i>
             </div>
           </div>
 

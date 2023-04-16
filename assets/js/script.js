@@ -11,11 +11,14 @@ createApp({
       currCategory : 0,
       tasksFiltered : [],
       tasksFilteredCounter : [],
-      errorMsg : "",
-      test : true,
+      deleteErrorMsg : "",
+      addErrorMsg : "",
       deletedIndex : 0,
       badgeColor : "",
       badgeIcon : "",
+      newTaskText : "",
+      newTaskCategory : "",
+      newTaskPriority : 0,
     }
   },
 
@@ -42,11 +45,20 @@ createApp({
       })
     },
 
-    writeErrorMsg(msg) {
-      this.errorMsg = msg;
-      setTimeout(() => {
-        this.errorMsg = "";
-      },2000)
+    writeErrorMsg(errorType,msg) {
+      if(errorType === "delete") {
+        this.deleteErrorMsg = msg;
+        setTimeout(() => {
+          this.deleteErrorMsg = "";
+        },2000)
+      }
+
+      if(errorType === "add") {
+        this.addErrorMsg = msg;
+        setTimeout(() => {
+          this.addErrorMsg = "";
+        },2000)
+      }
     },
 
     deleteTask(index) {
@@ -55,9 +67,9 @@ createApp({
         this.tasks.splice(this.deletedIndex,1);
         this.tasksCounter();
         this.categoryFilter();
-        this.errorMsg = "";
+        this.deleteErrorMsg = "";
       } else {
-        this.writeErrorMsg("Attenzione! Non puoi eliminare una task senza averla fatta!");
+        this.writeErrorMsg("delete","Non puoi eliminare una task senza averla fatta!");
       }
     },
 
@@ -70,6 +82,19 @@ createApp({
         }
       })
     },
+
+    // NON FUNZIONA
+    // deleteCheckedTasks() {
+    //   this.tasks.forEach( (task,index) => {
+    //     if(task.done) {
+    //       this.matchIndex(index);
+    //       this.tasks.splice(this.deletedIndex,1);
+    //     }
+    //   })
+    //   this.tasksCounter();
+    //   this.categoryFilter();
+    //   console.log(this.tasks);
+    // },
 
     prioritySort() {
       this.tasks.sort((a,b) => a.priority - b.priority);
@@ -93,6 +118,9 @@ createApp({
 
     setBadgeIcon (index) {
       switch (this.tasksFiltered[index].category) {
+        case this.categories[0].name :
+          this.badgeIcon = this.categories[0].icon;
+          break;
         case this.categories[1].name :
           this.badgeIcon = this.categories[1].icon;
           break;
@@ -117,6 +145,31 @@ createApp({
       }
 
       return this.badgeIcon;
+    },
+
+    addTask() {
+      if(this.newTaskText.length > 4) {
+        if(this.newTaskText !== "" && this.newTaskCategory !== "" && this.newTaskPriority !== 0) {
+          const newTask = {
+            text : this.newTaskText,
+            done : false,
+            category : this.newTaskCategory,
+            priority : this.newTaskPriority,
+          }
+
+          this.tasks.unshift(newTask);
+          this.prioritySort();
+          this.categoryFilter();
+          this.tasksCounter();
+          this.newTaskText = "";
+          this.newTaskCategory = "";
+          this.newTaskPriority = 0;
+        } else {
+          this.writeErrorMsg("add","Devi compilare tutti i campi!")
+        }
+      } else {
+        this.writeErrorMsg("add","Il testo deve essere di almeno 5 caratteri!")
+      }
     }
   },
 

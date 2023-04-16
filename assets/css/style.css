@@ -53,6 +53,25 @@ header .add-task:hover {
   cursor: pointer;
 }
 
+.add-modal-header {
+  background-color: var(--mycyan);
+}
+
+.input-new-task {
+  border: 1px solid rgb(220, 220, 220);
+  height: 40px;
+}
+
+.btn-add-task {
+  background-color: var(--mycyan);
+  border : 0;
+}
+
+.btn-add-task:hover {
+  background-color: var(--mycyan);
+  transform: scale(1.1);
+}
+
 
 /* Main */
 .main-wrapper {
@@ -73,6 +92,14 @@ header .add-task:hover {
 /* main content */
 .error-message {
   color : var(--myred);
+}
+
+.delete-checked {
+  background-color: var(--myred);
+}
+
+.delete-checked:hover {
+  cursor: pointer;
 }
 
 .emoji {
